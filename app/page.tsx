@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Image from 'next/image';
 
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -357,10 +358,13 @@ export default function Portfolio() {
             <div className='flex justify-center lg:justify-end'>
               <div className='relative'>
                 <div className='w-64 h-64 sm:w-80 sm:h-80 bg-gray-900 rounded-2xl overflow-hidden border-2 border-green-400 shadow-2xl shadow-green-400/10'>
-                  <img
+                  <Image
                     src={personalInfo.headshot || '/placeholder.svg'}
                     alt={`${personalInfo.name} - Software Engineer`}
                     className='w-full h-full object-cover'
+                    width={320}
+                    height={320}
+                    priority
                   />
                 </div>
                 <div className='absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-4 h-4 sm:w-6 sm:h-6 bg-green-400 rounded-full'></div>
@@ -391,10 +395,14 @@ export default function Portfolio() {
                 className='bg-gray-900 border-gray-800 overflow-hidden hover:border-blue-400/30 transition-colors'>
                 <div className='grid lg:grid-cols-2 gap-0'>
                   <div className='aspect-video lg:aspect-auto relative'>
-                    <img
+                    <Image
                       src={project.image || '/placeholder.svg'}
                       alt={`${project.title} interface`}
                       className='w-full h-full object-cover'
+                      fill
+                      sizes='(max-width: 1024px) 100vw, 50vw'
+                      style={{ objectFit: 'cover' }}
+                      priority={index === 0}
                     />
                     <div className='absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity'>
                       <Button
