@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import {
-  Github,
   ExternalLink,
   Mail,
-  Linkedin,
   MapPin,
   Download,
   Menu,
@@ -21,35 +19,64 @@ import Image from 'next/image';
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const yearsOfExperience = () => {
+    const startYear = 2017;
+    const startMonth = 5; // June (0-indexed, so 5 is June)
+    const now = new Date();
+    let years = now.getFullYear() - startYear;
+    if (now.getMonth() < startMonth) {
+      years -= 1;
+    }
+    return years;
+  };
+
   const personalInfo = {
     name: 'Brandon McCray',
     title: 'Software Engineer',
     location: 'Raleigh, NC',
     email: 'bradmccray89@gmail.com',
     linkedin: 'https://linkedin.com/in/brandon-mccray-8b1b65a9/',
-    github: 'https://github.com/brandonmccray',
+    github: 'https://github.com/bradmccray89',
     resume: '/brandon-mccray-resume.pdf',
-    headshot:
-      '/placeholder.svg?height=300&width=300&text=Replace+with+actual+headshot',
+    headshot: '/images/brandon-mccray-headshot-superhero.png',
   };
 
   const techStack = [
     {
       name: 'Next.js',
       detail: 'App Router, Server Components, production apps',
+      icon: '/images/nextjs-icon.svg',
     },
     {
       name: 'React',
       detail: 'Hooks, performance optimization, modern patterns',
+      icon: '/images/react-icon.svg',
     },
     {
       name: 'TypeScript',
       detail: 'Strict typing, advanced features, scalable code',
+      icon: '/images/typescript-icon.svg',
     },
-    { name: 'Angular', detail: 'Enterprise apps, component architecture' },
-    { name: 'C# .NET', detail: 'Web APIs, Entity Framework, async patterns' },
-    { name: 'SQL Server', detail: 'Query optimization, stored procedures' },
-    { name: 'Azure DevOps', detail: 'CI/CD pipelines, automated deployments' },
+    {
+      name: 'Angular',
+      detail: 'Enterprise apps, component architecture',
+      icon: '/images/angular-icon.svg',
+    },
+    {
+      name: 'C# .NET',
+      detail: 'Web APIs, Entity Framework, async patterns',
+      icon: '/images/dotnet-icon.svg',
+    },
+    {
+      name: 'SQL Server',
+      detail: 'Query optimization, stored procedures',
+      icon: '/images/sqlserver-icon.svg',
+    },
+    {
+      name: 'Azure DevOps',
+      detail: 'CI/CD pipelines, automated deployments',
+      icon: '/images/azuredevops-icon.svg',
+    },
   ];
 
   const projects = [
@@ -57,7 +84,7 @@ export default function Portfolio() {
       title: 'Lenuvio Business Website',
       description:
         'Professional business website showcasing modern web development practices. Built with Next.js 15, featuring responsive design, optimized performance, and clean UI.',
-      image: '/images/lenuvio-screenshot.jpg',
+      image: '/images/lenuvio-screenshot.png',
       github: '',
       live: 'https://lenuv.io',
       accomplishments: [
@@ -75,7 +102,7 @@ export default function Portfolio() {
       title: 'EchoForge AI Platform',
       description:
         'AI-powered personality modeling platform with secure user authentication. Features real-time AI analysis, modern gradient UI, and seamless user experience.',
-      image: '/images/echoforge-screenshot.jpg',
+      image: '/images/echoforge-screenshot.png',
       github: '',
       live: 'https://echoforge.lenuv.io',
       accomplishments: [
@@ -165,9 +192,9 @@ export default function Portfolio() {
       year: '2019',
     },
     {
-      degree: 'Azure Fundamentals Certification',
-      school: 'Microsoft',
-      year: 'Certified',
+      degree: 'Independent Research - AI-Powered Developer Tools',
+      school: 'Lenuvio (Founder)',
+      year: '2024 - Present',
     },
   ];
 
@@ -195,7 +222,7 @@ export default function Portfolio() {
               {personalInfo.name}
             </div>
 
-            <div className='hidden md:flex space-x-6 lg:space-x-8'>
+            <div className='hidden md:flex space-x-6 lg:space-x-8 items-center'>
               <a
                 href='#home'
                 className='text-gray-300 hover:text-green-400 transition-colors font-medium'>
@@ -298,35 +325,16 @@ export default function Portfolio() {
 
                 <div className='bg-gray-900 border border-green-500/20 rounded-xl p-4 sm:p-6'>
                   <p className='text-base sm:text-lg text-gray-200 leading-relaxed'>
-                    Currently Software Engineer at{' '}
+                    Software Engineer at{' '}
                     <span className='text-green-400 font-semibold'>
                       Viewpoint Partners
                     </span>
-                    , developing financial compliance platform. 7+ years
-                    experience including enterprise applications, modern web
-                    development, and 4 years U.S. Navy technical service.
+                    , building financial compliance tools for enterprise
+                    clients. Over {yearsOfExperience()} years of experience
+                    across modern web platforms and scalable systems. U.S. Navy
+                    veteran with a technical background in electronics and
+                    communications.
                   </p>
-                </div>
-
-                {/* Tech Stack */}
-                <div>
-                  <p className='text-xs sm:text-sm font-semibold text-gray-400 mb-3 sm:mb-4 uppercase tracking-wider'>
-                    Technologies I Actually Use
-                  </p>
-                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3'>
-                    {techStack.map((tech, index) => (
-                      <div
-                        key={index}
-                        className='bg-gray-800 border border-gray-700 rounded-lg p-3 hover:border-green-400/50 transition-colors'>
-                        <div className='font-semibold text-white text-sm'>
-                          {tech.name}
-                        </div>
-                        <div className='text-gray-400 text-xs mt-1'>
-                          {tech.detail}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 
@@ -355,21 +363,52 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className='flex justify-center lg:justify-end'>
-              <div className='relative'>
-                <div className='w-64 h-64 sm:w-80 sm:h-80 bg-gray-900 rounded-2xl overflow-hidden border-2 border-green-400 shadow-2xl shadow-green-400/10'>
+            <div className='flex justify-center'>
+              <div className='relative group transition duration-300'>
+                <div className='max-w-[320px] w-full bg-gray-900 rounded-2xl overflow-hidden border-2 border-green-400 shadow-xl transition duration-300 group-hover:scale-105 group-hover:shadow-green-500/30'>
                   <Image
                     src={personalInfo.headshot || '/placeholder.svg'}
                     alt={`${personalInfo.name} - Software Engineer`}
-                    className='w-full h-full object-cover'
-                    width={320}
-                    height={320}
+                    className='w-full h-auto object-contain transition duration-300 group-hover:contrast-125 group-hover:brightness-105 group-hover:scale-110'
+                    width={800}
+                    height={800}
                     priority
                   />
                 </div>
-                <div className='absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-4 h-4 sm:w-6 sm:h-6 bg-green-400 rounded-full'></div>
-                <div className='absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-3 h-3 sm:w-4 sm:h-4 bg-blue-400 rounded-full'></div>
+
+                {/* Corner indicators stay the same */}
+                <div className='absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-4 h-4 sm:w-6 sm:h-6 transition duration-300 bg-green-400 rounded-full group-hover:scale-150'></div>
+                <div className='absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-3 h-3 sm:w-4 sm:h-4 transition duration-300 bg-blue-400 rounded-full group-hover:scale-175'></div>
               </div>
+            </div>
+          </div>
+          {/* Tech Stack */}
+          <div className='mt-10 sm:mt-12 lg:mt-14'>
+            <p className='text-xs sm:text-sm font-semibold text-gray-400 mb-3 sm:mb-4 uppercase tracking-wider'>
+              Technologies I Actually Use
+            </p>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3'>
+              {techStack.map((tech, index) => (
+                <div
+                  key={index}
+                  className='bg-gray-800 border border-gray-700 rounded-lg p-3 hover:border-green-400/50 transition-colors flex items-center gap-3'>
+                  <Image
+                    src={tech.icon}
+                    alt={tech.name}
+                    className='w-10 h-10 sm:w-12 sm:h-12 object-contain bg-white rounded-full p-1'
+                    width={40}
+                    height={40}
+                  />
+                  <div>
+                    <div className='font-semibold text-white text-sm'>
+                      {tech.name}
+                    </div>
+                    <div className='text-gray-400 text-xs mt-1'>
+                      {tech.detail}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -398,10 +437,8 @@ export default function Portfolio() {
                     <Image
                       src={project.image || '/placeholder.svg'}
                       alt={`${project.title} interface`}
-                      className='w-full h-full object-cover'
+                      className='object-cover'
                       fill
-                      sizes='(max-width: 1024px) 100vw, 50vw'
-                      style={{ objectFit: 'cover' }}
                       priority={index === 0}
                     />
                     <div className='absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity'>
@@ -478,7 +515,7 @@ export default function Portfolio() {
                         <div className='flex flex-col sm:flex-row gap-3'>
                           <Button
                             size='lg'
-                            className='bg-green-500 hover:bg-green-400 text-gray-950 font-bold flex-1'
+                            className='bg-green-500 hover:bg-green-400 text-gray-950 font-bold flex-1 py-2 sm:py-3'
                             asChild>
                             <a
                               href={project.live}
@@ -544,10 +581,8 @@ export default function Portfolio() {
                             .map((accomplishment, accIndex) => (
                               <li
                                 key={accIndex}
-                                className='text-gray-400 flex items-start text-sm'>
-                                <span className='text-amber-400 mr-2 mt-1'>
-                                  ▸
-                                </span>
+                                className='text-gray-400 flex items-center text-sm mt-2'>
+                                <span className='text-amber-400 mr-2'>▸</span>
                                 {accomplishment}
                               </li>
                             ))}
@@ -616,8 +651,8 @@ export default function Portfolio() {
                           (responsibility, respIndex) => (
                             <li
                               key={respIndex}
-                              className='text-gray-200 flex items-start text-sm sm:text-base'>
-                              <span className='text-amber-400 mr-2 sm:mr-3 mt-1 text-base sm:text-lg'>
+                              className='text-gray-200 flex items-center text-sm sm:text-base'>
+                              <span className='text-amber-400 mr-2 sm:mr-3 text-base sm:text-lg'>
                                 ▸
                               </span>
                               {responsibility}
@@ -679,30 +714,37 @@ export default function Portfolio() {
           </p>
 
           <div className='grid md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16 max-w-2xl mx-auto'>
-            <div className='bg-gray-900 border border-gray-800 rounded-xl p-6 sm:p-8 hover:border-green-400/50 transition-colors'>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className='block group bg-gray-900 border border-gray-800 rounded-xl p-6 sm:p-8 hover:border-green-400/50 transition-colors'>
               <Mail className='h-10 w-10 sm:h-12 sm:w-12 mx-auto text-green-400 mb-3 sm:mb-4' />
               <h3 className='font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-white'>
                 Email
               </h3>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className='text-gray-300 hover:text-green-400 transition-colors text-base sm:text-lg font-medium'>
+              <p className='text-gray-300 group-hover:text-green-400 transition-colors text-base sm:text-lg font-medium'>
                 {personalInfo.email}
-              </a>
-            </div>
-            <div className='bg-gray-900 border border-gray-800 rounded-xl p-6 sm:p-8 hover:border-blue-400/50 transition-colors'>
-              <Linkedin className='h-10 w-10 sm:h-12 sm:w-12 mx-auto text-blue-400 mb-3 sm:mb-4' />
+              </p>
+            </a>
+
+            <a
+              href={personalInfo.linkedin}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='block group bg-gray-900 border border-gray-800 rounded-xl p-6 sm:p-8 hover:border-blue-400/50 transition-colors'>
+              <Image
+                src='/images/linkedin-icon.svg'
+                alt='LinkedIn Icon'
+                className='h-10 w-10 sm:h-16 sm:w-16 mx-auto text-blue-400 mb-3 sm:mb-4'
+                width={40}
+                height={40}
+              />
               <h3 className='font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-white'>
                 LinkedIn
               </h3>
-              <a
-                href={personalInfo.linkedin}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-gray-300 hover:text-blue-400 transition-colors text-base sm:text-lg font-medium'>
+              <p className='text-gray-300 group-hover:text-blue-400 transition-colors text-base sm:text-lg font-medium'>
                 Connect
-              </a>
-            </div>
+              </p>
+            </a>
           </div>
 
           <div className='flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center'>
@@ -739,14 +781,20 @@ export default function Portfolio() {
             <div className='font-bold text-xl sm:text-2xl text-green-400 mb-4 sm:mb-6 md:mb-0'>
               {personalInfo.name}
             </div>
-            <div className='flex space-x-6 sm:space-x-8'>
+            <div className='flex items-center space-x-6 sm:space-x-8'>
               <a
                 href={personalInfo.github}
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-gray-400 hover:text-amber-400 transition-colors'
                 aria-label='GitHub Profile'>
-                <Github className='h-6 w-6 sm:h-7 sm:w-7' />
+                <Image
+                  src='/images/github-icon.svg'
+                  alt='GitHub Icon'
+                  className='h-4 w-4 sm:h-8 sm:w-8'
+                  width={40}
+                  height={40}
+                />
               </a>
               <a
                 href={personalInfo.linkedin}
@@ -754,18 +802,26 @@ export default function Portfolio() {
                 rel='noopener noreferrer'
                 className='text-gray-400 hover:text-blue-400 transition-colors'
                 aria-label='LinkedIn Profile'>
-                <Linkedin className='h-6 w-6 sm:h-7 sm:w-7' />
+                <Image
+                  src='/images/linkedin-icon.svg'
+                  alt='LinkedIn Icon'
+                  className='h-6 w-6 sm:h-12 sm:w-12'
+                  width={40}
+                  height={40}
+                />
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}
                 className='text-gray-400 hover:text-green-400 transition-colors'
                 aria-label='Send Email'>
-                <Mail className='h-6 w-6 sm:h-7 sm:w-7' />
+                <Mail className='h-6 w-6 sm:h-10 sm:w-10' />
               </a>
             </div>
           </div>
           <div className='border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base'>
-            <p>&copy; 2024 {personalInfo.name}</p>
+            <p>
+              &copy; {new Date().getFullYear()} {personalInfo.name}
+            </p>
           </div>
         </div>
       </footer>
