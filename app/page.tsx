@@ -489,8 +489,8 @@ export default function Portfolio() {
                             (accomplishment, accIndex) => (
                               <li
                                 key={accIndex}
-                                className='text-gray-200 flex items-start text-sm sm:text-base'>
-                                <span className='text-green-400 mr-2 sm:mr-3 mt-1 text-base sm:text-lg'>
+                                className='text-gray-200 flex items-center text-sm sm:text-base'>
+                                <span className='text-green-400 mr-2 sm:mr-3 text-base sm:text-lg'>
                                   ▸
                                 </span>
                                 {accomplishment}
