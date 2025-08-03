@@ -752,7 +752,10 @@ export default function Portfolio() {
               size='lg'
               className='bg-green-500 hover:bg-green-400 text-gray-950 font-bold text-lg px-8 py-4'
               asChild>
-              <a href={`mailto:${personalInfo.email}`}>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                target='_blank'
+                rel='noopener noreferrer'>
                 <Mail className='mr-2 h-5 w-5' />
                 {`Let's Talk`}
               </a>
