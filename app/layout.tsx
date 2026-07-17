@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Brandon McCray | Software Engineer',
+  title: 'Brandon McCray | Senior Software Engineer',
   description:
-    "Brandon McCray's portfolio: modern web, cloud, and AI engineering done right and delivered fast. See live apps, real experience, and why quality doesn't have to take forever.",
+    "Brandon McCray's portfolio: senior full-stack engineering across .NET, Angular, and AI-enabled systems. See live apps, real experience, and why quality doesn't have to take forever.",
   icons: {
     icon: [
       { url: '/favicon.ico' },
