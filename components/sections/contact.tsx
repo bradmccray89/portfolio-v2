@@ -1,4 +1,5 @@
-import { Download, Linkedin, Mail } from 'lucide-react';
+import { Download, Mail } from 'lucide-react';
+import { LinkedinIcon } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
 import { personalInfo } from '@/lib/data';
@@ -25,7 +26,7 @@ export function Contact() {
               href={personalInfo.linkedin}
               target='_blank'
               rel='noopener noreferrer'>
-              <Linkedin className='h-4 w-4' />
+              <LinkedinIcon className='h-4 w-4' />
               LinkedIn
             </a>
           </Button>

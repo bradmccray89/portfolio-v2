@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/icons';
 import { personalInfo } from '@/lib/data';
 
 export function SiteFooter() {
@@ -16,7 +17,7 @@ export function SiteFooter() {
             rel='noopener noreferrer'
             aria-label='GitHub'
             className='text-muted-foreground hover:text-foreground transition-colors'>
-            <Github className='h-5 w-5' />
+            <GithubIcon className='h-5 w-5' />
           </a>
           <a
             href={personalInfo.linkedin}
@@ -24,7 +25,7 @@ export function SiteFooter() {
             rel='noopener noreferrer'
             aria-label='LinkedIn'
             className='text-muted-foreground hover:text-foreground transition-colors'>
-            <Linkedin className='h-5 w-5' />
+            <LinkedinIcon className='h-5 w-5' />
           </a>
           <a
             href={`mailto:${personalInfo.email}`}

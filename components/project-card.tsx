@@ -1,4 +1,5 @@
-import { ExternalLink, Github, Lock } from 'lucide-react';
+import { ExternalLink, Lock } from 'lucide-react';
+import { GithubIcon } from '@/components/icons';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import type { Project } from '@/lib/data';
@@ -15,7 +16,7 @@ function StatusBadge({ status }: { status: Project['status'] }) {
   if (status === 'open-source') {
     return (
       <span className='inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-secondary text-secondary-foreground border border-border'>
-        <Github className='h-3 w-3' />
+        <GithubIcon className='h-3 w-3' />
         Open source
       </span>
     );
@@ -107,7 +108,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 href={project.links.github}
                 target='_blank'
                 rel='noopener noreferrer'>
-                <Github className='h-4 w-4' />
+                <GithubIcon className='h-4 w-4' />
                 View on GitHub
               </a>
             </Button>
